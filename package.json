@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "buildServer": "tsc && sass styles:public/styles && node public/server.js",
-    "build": "tsc && sass styles:public/styles && node public/utils/fullBuild.js && node public/server.js"
+    "buildServer": "tsc && node public/server.js && sass --watch styles:public/styles",
+    "build": "tsc && node public/utils/fullBuild.js && node public/server.js && sass styles:public/styles"
   },
   "author": "",
   "license": "ISC",

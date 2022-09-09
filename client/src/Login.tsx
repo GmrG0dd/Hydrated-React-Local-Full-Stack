@@ -27,7 +27,6 @@ const Login:FunctionComponent = () => {
                 <input ref={passRef} type="text" placeholder='password' />
                 <button type='button' onClick={postLogin}>Go</button>
             </form>
-            <a href='/user/register'>Register</a>
         </main>
     );
 }
