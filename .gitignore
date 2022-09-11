@@ -1,6 +1,7 @@
 nodes_modules
 client/nodes_modules
 client/build
+client/src
 public
 node_modules
 .DS_store
