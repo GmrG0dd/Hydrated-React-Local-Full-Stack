@@ -1,7 +1,12 @@
 import React, { FunctionComponent, useRef } from 'react';
-import Header from './Header';
+import { ServerPropsType } from "../utils/serverProps";
+import Header from './parts/Header';
 
-const Login:FunctionComponent = () => {
+type Props = {
+    ServerProps: ServerPropsType
+}
+
+const Login:FunctionComponent<Props> = (props) => {
     const userRef = useRef<HTMLInputElement>(null);
     const passRef = useRef<HTMLInputElement>(null);
 
@@ -21,7 +26,7 @@ const Login:FunctionComponent = () => {
 
     return (
         <main>
-            <Header></Header>
+            <Header serverProps={props.ServerProps}></Header>
             <form>
                 <input ref={userRef} type="text"  placeholder='username' />
                 <input ref={passRef} type="text" placeholder='password' />

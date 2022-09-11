@@ -1,5 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
-import fs from 'fs';
+import express, { Request, Response } from 'express';
 const staticFiles = express.Router();
 import path from 'path';
 

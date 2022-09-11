@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { ServerPropsType } from "./serverProps";
+import { ServerPropsType } from "../../utils/serverProps";
 
 type Props = {
     serverProps: ServerPropsType

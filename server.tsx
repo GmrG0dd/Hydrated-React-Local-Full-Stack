@@ -5,10 +5,17 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import myDB from "./db/myDB.js";
 import crypto from 'crypto';
 
+import { ServerPropsDefault, ServerPropsType } from './utils/serverProps';
+
 const app:Application = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+declare global {
+    interface Window {
+        ServerProps:ServerPropsType;
+    }
+}
 
 passport.use(new LocalStrategy({
     usernameField: 'username', 
@@ -55,13 +62,16 @@ app.use('/admin', admin);
 
 
 import React from "react";
-import App from "./src/App.js";
+import App from "./pages/App.js";
 import { renderToString } from "react-dom/server";
 import exportHTML from "./utils/exportHTML.js";
 
-app.get('/', async ( req:Request, res:Response ) => {
+app.get('/', async ( req:any, res:Response ) => {
     res.setHeader("Content-Type", "text/html");
-    res.send(exportHTML(renderToString(<App/>), 'App'));
+    var serverProps = ServerPropsDefault;
+    req.session.passport?.user ? serverProps.isAdmin = true : serverProps.isAdmin = false;
+
+    res.send(exportHTML(renderToString(<App ServerProps={serverProps}/>), 'App', serverProps));
 });
 
 app.listen(3000, () => { console.log("starting!") } );

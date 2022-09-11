@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { ServerPropsType } from "./serverProps";
-import Header from './Header';
+import { ServerPropsType } from "../utils/serverProps";
+import Header from './parts/Header';
 
 type Props = {
     ServerProps: ServerPropsType

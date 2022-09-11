@@ -1,11 +1,12 @@
 import fs from 'fs';
+import { ServerPropsType } from './serverProps';
 
 const key = JSON.parse(fs.readFileSync('./public/src/key.json').toString());
 
 
 
 
-function exportHTML(react:string, fileName:string){ 
+function exportHTML(react:string, fileName:string, serverProps:ServerPropsType){ 
     return (
         '<!DOCTYPE html>' +
         '<html lang="en">' +
@@ -18,9 +19,9 @@ function exportHTML(react:string, fileName:string){
             '<title>Web Builder</title>' +
             '<link rel="stylesheet" href="/static/styles/global.css">' +
             '<link rel="stylesheet" href="/static/styles/' + fileName + '.css">' +
+            '<script>window.ServerProps=' + JSON.stringify(serverProps) + '</script>' +
           '</head>' +
           '<body>' +
-            '<noscript>You need to enable JavaScript to run this app.</noscript>' +
             '<div id="root">' + react + '</div>' +
             '<script src="/static/scripts/' + key[fileName] + '"></script>' + 
           '</body>' +

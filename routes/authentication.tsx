@@ -5,10 +5,11 @@ import crypto from 'crypto';
 import myDB from '../db/myDB.js';
 
 import React from 'react'
+import { ServerPropsType, ServerPropsDefault } from "../utils/serverProps";
 import { renderToString } from "react-dom/server";
 import exportHTML from "../utils/exportHTML.js";
-import Login from '../src/Login';
-import Register from "../src/Register.js";
+import Login from '../pages/Login';
+import Register from "../pages/Register.js";
 
 
 function isAuth ( req:any, res:Response, next:NextFunction ) {
@@ -23,8 +24,11 @@ function isAdmin ( req:any, res:Response, next:NextFunction ) {
 
 authentication.route('/login')
     .post(passport.authenticate('local', {successRedirect: '/', failureRedirect: '/user/register'}))
-    .get(async (req:Request, res: Response) => {
-        res.send(exportHTML(renderToString(<Login/>), 'Login'));
+    .get(async (req:any, res: Response) => {
+        var serverProps = ServerPropsDefault;
+        req.session.passport?.user ? serverProps.isAdmin = true : serverProps.isAdmin = false;
+
+        res.send(exportHTML(renderToString(<Login ServerProps={serverProps}/>), 'Login', serverProps));
     });
 
 authentication.route('/logout')
@@ -48,8 +52,11 @@ authentication.route('/register')
         if(usersuccess) res.redirect('/user/login');
         else { res.redirect('/user/register') }
     })
-    .get(async (req:Request, res: Response) => {
-        res.send(exportHTML(renderToString(<Register/>), 'Register'));
+    .get(async (req:any, res: Response) => {
+        var serverProps = ServerPropsDefault;
+        req.session.passport?.user ? serverProps.isAdmin = true : serverProps.isAdmin = false;
+
+        res.send(exportHTML(renderToString(<Register ServerProps={serverProps}/>), 'Register', serverProps));
     });
 
 
