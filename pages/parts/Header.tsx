@@ -15,6 +15,7 @@ const Header:FunctionComponent<Props>= (props) => {
         links = (<div>
             <a href='/'>Home</a>
             <a href='/admin'>Account</a>
+            <a href='/user/logout'>Log Out</a>
         </div>);
     } else {
         links = (<div>

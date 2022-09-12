@@ -1,4 +1,17 @@
-html, #root {
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --black: #201e1f;
+    --darkGrey: rgb(41, 40, 47);
+    --mediumGrey: #545165;
+    --yellow: yellow;
+    --lightYellow: rgb(210, 210, 63);
+}
+
+html, #root, main {
+    font-family: 'Nunito';
+    font-size: 1.05em;
+    font-weight: 500;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -12,11 +25,14 @@ html, #root {
     display: block;
     position: relative;
     font-size: 1em;
+    color: white;
+    transition: all 0.1s linear;
 }
 
 a, span, p, h1, h2, h3, h4, h5, h6 {
     margin: 0px;
     padding: 0px;
+    width: fit-content;
 }
 
 head {
@@ -26,19 +42,30 @@ head {
 body {
     margin: 0px;
     min-height: 100%;
-    background: lightgrey;
+    background: var(--black);
 }
 
 #header {
     display: grid;
     grid-template-columns: auto;
-    width: 100%;
+    width: calc(100% - 4em);
     height: fit-content;
-    padding: 1em;
+    padding: 0.5em 2em;
     grid-template-columns: 50% auto;
     box-shadow: 0 0 1vh 0 rgba(0,0,0, 0.25);
-    background: white;
-    border: 1px solid black;
+    background: var(--darkGrey);
+
+    a {
+        text-align: center;
+        background: #00000000;
+        transition: background 0.1s linear, color 0.1s linear;
+        border-radius: 0.25em;
+        width: 100%;
+    }
+    a:hover {
+        background: var(--mediumGrey);
+        color: var(--yellow);
+    }
 
     p {
         height: fit-content;
@@ -49,7 +76,8 @@ body {
 
     div {
         display: grid;
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: auto;
+        grid-auto-flow: column;
         grid-gap: 1em;
     }
 }

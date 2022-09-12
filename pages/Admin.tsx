@@ -10,7 +10,9 @@ const Admin:FunctionComponent<Props> = (props) => {
     return (
         <main>
             <Header serverProps={props.ServerProps} ></Header>
-            hi user
+            <div>
+                <p className='Message'>hi user</p>
+            </div>
         </main>
     )
 }
