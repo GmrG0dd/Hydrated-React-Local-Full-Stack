@@ -9,7 +9,7 @@ import Admin from "../pages/Admin";
 import exportHTML from "../utils/exportHTML";
 
 admin.route('/')
-    .get(isAdmin, async (req:any, res: Response, next: NextFunction) => {
+    .get(async (req:any, res: Response, next: NextFunction) => {
         var serverProps = ServerPropsDefault;
         req.session.passport?.user ? serverProps.isAdmin = true : serverProps.isAdmin = false;
 

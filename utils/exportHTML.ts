@@ -6,7 +6,10 @@ const key = JSON.parse(fs.readFileSync('./public/src/key.json').toString());
 
 
 
-function exportHTML(react:string, fileName:string, serverProps:ServerPropsType){ 
+function exportHTML(react:string, fileName:string, serverPropsInput?:ServerPropsType){ 
+    var serverProps;
+    serverPropsInput ? serverProps = JSON.stringify(serverPropsInput) : serverProps = '{}';
+
     return (
         '<!DOCTYPE html>' +
         '<html lang="en">' +

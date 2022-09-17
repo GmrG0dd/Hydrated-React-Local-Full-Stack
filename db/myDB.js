@@ -3,12 +3,16 @@ import path from 'path';
 
 let data = {
     dataTypes: {
-        'Users': {
-            'id': 'string',
-            'username': 'string',
-            'hash': 'string',
-            'salt': 'string',
-            'admin': 'boolean'
+        Users: {
+            id: 'string',
+            username: 'string',
+            hash: 'string',
+            salt: 'string',
+            admin: 'boolean'
+        },
+        Pages: {
+            id: 'string',
+            
         }
     },
     data: {

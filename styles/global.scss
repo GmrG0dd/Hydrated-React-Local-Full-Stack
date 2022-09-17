@@ -10,8 +10,6 @@
 
 html, #root, main {
     font-family: 'Nunito';
-    font-size: 1.05em;
-    font-weight: 500;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -27,6 +25,8 @@ html, #root, main {
     font-size: 1em;
     color: white;
     transition: all 0.1s linear;
+    font-size: 1.02em;
+    font-weight: 500;
 }
 
 a, span, p, h1, h2, h3, h4, h5, h6 {

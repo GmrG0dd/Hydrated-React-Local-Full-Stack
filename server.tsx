@@ -54,10 +54,12 @@ passport.deserializeUser((userID, done) => {
 import staticFiles  from './routes/staticFiles.js';
 import authentication from './routes/authentication.js';
 import admin from './routes/admin.js';
+import pages from './routes/pages';
 
 app.use('/static', staticFiles);
 app.use('/user', authentication);
 app.use('/admin', admin);
+app.use('/pages', pages);
 
 
 

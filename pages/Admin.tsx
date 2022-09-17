@@ -6,13 +6,15 @@ type Props = {
     ServerProps: ServerPropsType
 }
 
+type Page = {
+    name: string
+}
+
 const Admin:FunctionComponent<Props> = (props) => {
     return (
         <main>
             <Header serverProps={props.ServerProps} ></Header>
-            <div>
-                <p className='Message'>hi user</p>
-            </div>
+            <div></div>
         </main>
     )
 }

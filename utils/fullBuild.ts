@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import fs from 'fs';
 
 let key = {};
-const indexFile = "import React from 'react'; import ReactDOM from 'react-dom/client'; import {ServerPropsType} from './serverProps'; import __App__ from './__App__'; declare global {interface Window{ServerProps:ServerPropsType;}}; ReactDOM.hydrateRoot( document.getElementById('root') as HTMLElement, <__App__/> );";
+const indexFile = "import React from 'react'; import ReactDOM from 'react-dom/client'; import {ServerPropsType} from './serverProps'; import __App__ from './__App__'; declare global {interface Window{ServerProps:ServerPropsType;}}; ReactDOM.hydrateRoot( document.getElementById('root') as HTMLElement, <__App__/> );"
 
 
 execSync("rm -r client/src");

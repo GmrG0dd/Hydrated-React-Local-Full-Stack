@@ -1,5 +1,5 @@
 type ServerPropsType = {
-    isAdmin: boolean;
+    isAdmin?: boolean;
 }
 
 const ServerPropsDefault:ServerPropsType = {
