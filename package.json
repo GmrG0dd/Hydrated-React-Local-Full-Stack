@@ -2,7 +2,7 @@
   "name": "hydrated-react-local-full-stack",
   "version": "1.0.0",
   "description": "Express server using a hydrated React frontend, Passport authentication, and a local JSON database ",
-  "main": "server.tsx",
+  "main": "public/server.js",
   "scripts": {
     "buildServer": "tsc && sass styles:public/styles && node public/server.js",
     "build": "tsc && sass styles:public/styles && node public/utils/fullBuild.js && node public/server.js"
