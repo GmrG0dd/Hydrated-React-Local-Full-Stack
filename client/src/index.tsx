@@ -1,1 +1,0 @@
-import React from 'react'; import ReactDOM from 'react-dom/client'; import {ServerPropsType} from './serverProps'; import Register from './Register'; declare global {interface Window{ServerProps:ServerPropsType;}}; ReactDOM.hydrateRoot( document.getElementById('root') as HTMLElement, <Register ServerProps={window.ServerProps}/> );
