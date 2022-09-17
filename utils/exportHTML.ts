@@ -22,7 +22,7 @@ function exportHTML(react:string, fileName:string, serverPropsInput?:ServerProps
             '<title>Web Builder</title>' +
             '<link rel="stylesheet" href="/static/styles/global.css">' +
             '<link rel="stylesheet" href="/static/styles/' + fileName + '.css">' +
-            '<script>window.ServerProps=' + JSON.stringify(serverProps) + '</script>' +
+            '<script>window.ServerProps=' + serverProps + '</script>' +
           '</head>' +
           '<body>' +
             '<div id="root">' + react + '</div>' +
