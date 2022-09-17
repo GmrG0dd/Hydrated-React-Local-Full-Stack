@@ -1,13 +1,13 @@
 {
-  "name": "idek",
+  "name": "hydrated-react-local-full-stack",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Express server using a hydrated React frontend, Passport authentication, and a local JSON database ",
+  "main": "server.tsx",
   "scripts": {
     "buildServer": "tsc && sass styles:public/styles && node public/server.js",
     "build": "tsc && sass styles:public/styles && node public/utils/fullBuild.js && node public/server.js"
   },
-  "author": "",
+  "author": "Kevin Cox",
   "license": "ISC",
   "devDependencies": {
     "@types/cookie-parser": "^1.4.3",

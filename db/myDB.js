@@ -39,7 +39,7 @@ const myDB = {
         const keys = inputData.split('.');
         if(keys.length < 2) return false;
 
-        var target = data.data[keys.shift().toString()];
+        var target = [...data.data[keys.shift().toString()]];
         if(!target || target.length < 1) return false;
 
         let results = [];
@@ -70,10 +70,10 @@ const myDB = {
         if(keys.length < 2) return false;
 
         var type = keys.shift().toString();
-        var target = data.data[type];
+        var target = [...data.data[type]];
         if(!target || target.length < 1) return false;
 
-        let result;
+        let results = [];
         for(let i = 0; i < target.length; i++){
             let entryData = target[i];
             for(let j = 0; j < keys.length; j++){
@@ -81,13 +81,16 @@ const myDB = {
                 else return false;
             }
             if(entryData === query) {
-                result = target[i];
-                data.data[type].splice(i, 1);
-                return result;
+                data.data[type].splice(i - results.length, 1);
+                results.push(target[i]);
             }
         }
 
-        return false;
+        if(results.length > 0) {
+            fs.writeFileSync(path.resolve('public/db/db.json'), JSON.stringify(data));
+            return results;
+        } 
+        else return false;
     }
 }
 
