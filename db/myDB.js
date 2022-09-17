@@ -69,7 +69,8 @@ const myDB = {
         const keys = inputData.split('.');
         if(keys.length < 2) return false;
 
-        var target = data.data[keys.shift().toString()];
+        var type = keys.shift().toString();
+        var target = data.data[type];
         if(!target || target.length < 1) return false;
 
         let result;
@@ -79,7 +80,11 @@ const myDB = {
                 if(entryData[keys[j]]) entryData = entryData[keys[j]];
                 else return false;
             }
-            if(entryData === query) results.push(target[i]);
+            if(entryData === query) {
+                result = target[i];
+                data.data[type].splice(i, 1);
+                return result;
+            }
         }
 
         return false;
