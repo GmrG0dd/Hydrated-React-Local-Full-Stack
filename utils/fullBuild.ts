@@ -5,10 +5,13 @@ import fs from 'fs';
 let key = {};
 const indexFile = "import React from 'react'; import ReactDOM from 'react-dom/client'; import {ServerPropsType} from './serverProps'; import __App__ from './__App__'; declare global {interface Window{ServerProps:ServerPropsType;}}; ReactDOM.hydrateRoot( document.getElementById('root') as HTMLElement, <__App__/> );"
 
-
-execSync("rm -r client/src");
+try{
+    execSync("rm -r client/src");
+} catch (err) {}
 execSync("mkdir client/src");
-execSync("rm -r public/src");
+try{
+    execSync("rm -r public/src");
+} catch (err) {}
 execSync("mkdir public/src");
 
 const files:String[] = execSync("cd pages && ls").toString().split('\n');
