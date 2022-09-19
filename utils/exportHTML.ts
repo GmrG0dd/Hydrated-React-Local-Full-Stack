@@ -1,9 +1,11 @@
 import fs from 'fs';
-import { ServerPropsType } from './serverProps';
 
 const key = JSON.parse(fs.readFileSync('./public/src/key.json').toString());
 
-
+declare global {
+  interface Window {
+      ServerProps:ServerPropsType;
+}}
 
 
 function exportHTML(react:string, fileName:string, serverPropsInput?:ServerPropsType){ 

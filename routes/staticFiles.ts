@@ -1,8 +1,10 @@
 import express, { Request, Response } from 'express';
-const staticFiles = express.Router();
 import path from 'path';
-import fs from 'fs';
 import { execSync } from 'child_process';
+
+const staticFiles = express.Router();
+
+
 
 const files = execSync("cd pages && ls").toString().split('\n');
 files.splice(files.length-1, 1);
@@ -19,5 +21,7 @@ staticFiles.route('/scripts/*')
         }
         res.sendFile(path.resolve('./public/src' + req.path.split('scripts')[1]));
     });
+
+
 
 export default staticFiles;

@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useRef } from 'react';
-import { ServerPropsType } from "../utils/serverProps";
 import Header from './parts/Header';
 
 type Props = {

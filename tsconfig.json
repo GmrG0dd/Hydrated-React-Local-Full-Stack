@@ -22,7 +22,7 @@
     "outDir": "public"
   },
   "include": [
-    "**/*.tsx", "db/**/*.js", "**/*.ts"
+    "**/*.tsx", "**/*.ts", "db/*.js"
   ],
   "exclude": [
     "db",
