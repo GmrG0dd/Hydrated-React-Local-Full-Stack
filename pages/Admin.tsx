@@ -12,7 +12,7 @@ type Page = {
 const Admin:FunctionComponent<Props> = (props) => {
     return (
         <main>
-            <Header serverProps={props.ServerProps} ></Header>
+            <Header serverProps={props.ServerProps}></Header>
             <div></div>
         </main>
     )

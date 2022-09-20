@@ -1,9 +1,15 @@
+import express, { Application, NextFunction } from "express";
+const app:Application = express();
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
+
 /**
  * declare your 
  */
 declare global { 
     type ServerPropsType = {
-        isAdmin?: boolean 
+        isAdmin: boolean 
 }}
 
 
@@ -19,15 +25,10 @@ const myDB = new db({
     }
 });
 
-import express, { Application } from "express";
-const app:Application = express();
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
 
 
-
+import staticFiles  from './utils/staticFiles.js';
 import index from './routes/index.js';
-import staticFiles  from './routes/staticFiles.js';
 import users from './routes/users.js';
 import admin from './routes/admin.js';
 

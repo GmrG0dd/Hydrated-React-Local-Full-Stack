@@ -8,7 +8,6 @@ type Props = {
 const Login:FunctionComponent<Props> = (props) => {
     const userRef = useRef<HTMLInputElement>(null);
     const passRef = useRef<HTMLInputElement>(null);
-
     async function postLogin() {
         if( !userRef.current || !passRef.current ) return false;
         const response = await fetch('/user/login', {

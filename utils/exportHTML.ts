@@ -1,18 +1,17 @@
 import fs from 'fs';
-
-const key = JSON.parse(fs.readFileSync('./public/src/key.json').toString());
+import { ReactElement } from 'react';
+import { renderToString } from 'react-dom/server';
 
 declare global {
   interface Window {
       ServerProps:ServerPropsType;
 }}
 
+const key = JSON.parse(fs.readFileSync('./public/src/key.json').toString());
 
-function exportHTML(react:string, fileName:string, serverPropsInput?:ServerPropsType){ 
-    var serverProps;
-    serverPropsInput ? serverProps = JSON.stringify(serverPropsInput) : serverProps = '{}';
-
-    return (
+function exportHTML(reactComponent:ReactElement<any>, fileName:string, inputServerProps?:ServerPropsType | {}){
+  if(!inputServerProps) inputServerProps = {}
+  return (
         '<!DOCTYPE html>' +
         '<html lang="en">' +
           '<head>' +
@@ -24,10 +23,10 @@ function exportHTML(react:string, fileName:string, serverPropsInput?:ServerProps
             '<title>Web Builder</title>' +
             '<link rel="stylesheet" href="/static/styles/global.css">' +
             '<link rel="stylesheet" href="/static/styles/' + fileName + '.css">' +
-            '<script>window.ServerProps=' + serverProps + '</script>' +
+            '<script>window.ServerProps=' + JSON.stringify(inputServerProps) + '</script>' +
           '</head>' +
           '<body>' +
-            '<div id="root">' + react + '</div>' +
+            '<div id="root">' + renderToString(reactComponent) + '</div>' +
             '<script src="/static/scripts/' + key[fileName] + '"></script>' + 
           '</body>' +
         '</html>'
