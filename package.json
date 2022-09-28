@@ -1,12 +1,13 @@
 {
   "name": "hydrated-react-local-full-stack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Express server using a hydrated React frontend, Passport authentication, and a local JSON database ",
   "main": "public/server.js",
   "scripts": {
     "buildServer": "tsc && sass styles:public/styles && node public/server.js",
     "build": "tsc && sass styles:public/styles && node public/utils/fullBuild.js && node public/server.js"
   },
+  "bin": "utils/cli.js",
   "author": "Kevin Cox",
   "license": "ISC",
   "devDependencies": {
