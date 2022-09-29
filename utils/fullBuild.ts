@@ -50,4 +50,5 @@ for(let i = 0; i < files.length; i++){
 
 fs.writeFileSync('public/src/key.json', JSON.stringify(key));
 
-execSync('node public/utils/watch.js');
+console.log('\nListening!\n\n');
+execSync('node public/server.js');
