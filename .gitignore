@@ -3,5 +3,6 @@ client/nodes_modules
 client/build
 client/src
 public/*
+assets/*
 node_modules
 .DS_store

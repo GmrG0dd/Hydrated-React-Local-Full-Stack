@@ -6,7 +6,8 @@
   "bin": "utils/cli.js",
   "scripts": {
     "watch": "tsc && node public/utils/watch.js",
-    "build": "tsc && node public/utils/fullBuild.js"
+    "build": "tsc && node public/utils/fullBuild.js",
+    "buildServer": "tsc && sass styles:public/styles && node public/server.js"
   },
   "author": "Kevin Cox",
   "license": "ISC",

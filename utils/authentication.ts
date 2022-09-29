@@ -33,7 +33,7 @@ passport.deserializeUser((userID, done) => {
 });
 
 
-app.use((req:any, res, next:NextFunction) => {
+app.use((req:any, res:Response, next:NextFunction) => {
     if(req.session.passport?.user) req.session.serverProps = {...req.session.serverProps, isAdmin: true};
     else req.session.serverProps = {...req.session.serverProps, isAdmin: false};  
     req.session.save();
@@ -51,4 +51,4 @@ function isAdmin ( req:any, res:Response, next:NextFunction ) {
     else res.send("Unauthenticated");
 }
 
-export { isAdmin, isAuth};
+export { isAdmin, isAuth };

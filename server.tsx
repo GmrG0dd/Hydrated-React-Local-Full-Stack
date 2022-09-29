@@ -59,7 +59,12 @@ app.use('/user', users);
 app.use('/admin', admin);
 
 
-
+/**
+ * 
+ * Declaring static files in the assets folder and starting up server
+ * 
+ */
+app.use(express.static('assets'));
 app.listen(3000, () => { console.log('listening!') });
 
 
