@@ -18,9 +18,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "no-unused-vars": false
   },
-  "include": [
-    "src"
-, "pages/Register.tsx"  ]
+  "include": [ "src" ]
 }

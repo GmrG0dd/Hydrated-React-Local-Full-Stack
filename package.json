@@ -4,25 +4,22 @@
   "description": "Express server using a hydrated React frontend, Passport authentication, and a local JSON database ",
   "main": "public/server.js",
   "scripts": {
-    "buildServer": "tsc && sass styles:public/styles && node public/server.js",
-    "build": "tsc && sass styles:public/styles && node public/utils/fullBuild.js && node public/server.js"
+    "watch": "tsc && node public/utils/watch.js",
+    "build": "tsc && node public/utils/fullBuild.js"
   },
   "bin": "utils/cli.js",
   "author": "Kevin Cox",
   "license": "ISC",
   "devDependencies": {
-    "@types/cookie-parser": "^1.4.3",
     "@types/express": "^4.17.13",
     "@types/express-session": "^1.17.5",
     "@types/passport": "^1.0.10",
     "@types/passport-local": "^1.0.34",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
-    "cookie-parser": "^1.4.6",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
-    "my-local-json-db": "^1.0.2",
-    "nodemon": "^2.0.19",
+    "my-local-json-db": "^1.0.3",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",

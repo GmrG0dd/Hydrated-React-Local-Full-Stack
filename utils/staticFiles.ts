@@ -7,7 +7,7 @@ const staticFiles = express.Router();
 
 
 const files = execSync("cd pages && ls").toString().split('\n');
-files.splice(files.length-1, 1);
+files.splice( files.length-1, 1 );
 
 staticFiles.route('/styles/*')
     .get( async (req:Request, res: Response) => {

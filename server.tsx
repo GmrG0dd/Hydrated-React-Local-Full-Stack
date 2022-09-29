@@ -1,11 +1,24 @@
-import express, { Application, NextFunction } from "express";
+import express, { Application } from "express";
+import session from "express-session";
 const app:Application = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(session({ 
+    secret: 'secret', //save in env variables 
+    resave: true,
+    saveUninitialized: true,
+    cookie : { 
+        secure : false, //change to true when hosting on https server
+        maxAge : (24 * 60 * 60 * 1000),
+        sameSite: true
+    },
+}));
 
 
 /**
- * declare your 
+ * 
+ * declare your server prop types
+ * 
  */
 declare global { 
     type ServerPropsType = {
@@ -13,7 +26,11 @@ declare global {
 }}
 
 
-
+/**
+ * 
+ * declare schemas for local database
+ * 
+ */
 import db from 'my-local-json-db';
 const myDB = new db({
     users: {
@@ -26,7 +43,11 @@ const myDB = new db({
 });
 
 
-
+/**
+ * 
+ * Declare your routes
+ * 
+ */
 import staticFiles  from './utils/staticFiles.js';
 import index from './routes/index.js';
 import users from './routes/users.js';
@@ -39,7 +60,7 @@ app.use('/admin', admin);
 
 
 
-app.listen(3000, () => { console.log("starting!") } );
+app.listen(3000, () => { console.log('listening!') });
 
 
 

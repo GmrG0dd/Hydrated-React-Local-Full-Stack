@@ -18,18 +18,8 @@ passport.use(new LocalStrategy({
 }));
 
 
+
 import { app } from '../server';
-import session from "express-session";
-app.use(session({ 
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true,
-    cookie : { 
-        secure : false, 
-        maxAge : (4 * 60 * 60 * 1000),
-        sameSite: true
-    },
-}));
 
 app.use(passport.initialize());
 app.use(passport.session());
