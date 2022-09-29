@@ -5,9 +5,9 @@
   "main": "public/server.js",
   "bin": "utils/cli.js",
   "scripts": {
-    "watch": "tsc && node public/utils/watch.js",
-    "build": "tsc && node public/utils/fullBuild.js",
-    "buildServer": "tsc && sass styles:public/styles && node public/server.js"
+    "watch": "node node_modules/hydrated-react-local-full-stack-scripts/utils/watch.js",
+    "build": "node node_modules/hydrated-react-local-full-stack-scripts/fullBuild.js",
+    "buildServer": "node node_modules/hydrated-react-local-full-stack-scripts/serverBuild.js"
   },
   "author": "Kevin Cox",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "@types/react-dom": "^18.0.6",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
+    "hydrated-react-local-full-stack-scripts": "^1.0.0",
     "my-local-json-db": "^1.0.3",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",

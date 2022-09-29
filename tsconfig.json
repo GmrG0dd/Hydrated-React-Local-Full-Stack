@@ -23,7 +23,7 @@
   },
   "include": [
     "**/*.tsx", "**/*.ts", "db/*.js"
-  ],
+, "node_modules/hydrated-react-local-full-stack-scripts/watch.ts"  ],
   "exclude": [
     "db",
     "public",

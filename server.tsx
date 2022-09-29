@@ -65,7 +65,7 @@ app.use('/admin', admin);
  * 
  */
 app.use(express.static('assets'));
-app.listen(3000, () => { console.log('listening!') });
+app.listen(3000, () => { console.log('Listening!\n\n') });
 
 
 
