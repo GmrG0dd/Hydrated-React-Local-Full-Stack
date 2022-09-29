@@ -1,6 +1,6 @@
 {
   "name": "hydrated-react-local-full-stack",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Express server using a hydrated React frontend, Passport authentication, and a local JSON database ",
   "main": "public/server.js",
   "bin": "utils/cli.js",
