@@ -18,8 +18,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "no-unused-vars": false
+    "jsx": "react-jsx"
+  },
+  "rules": {
+    "no-unused-vars": "off",
   },
   "include": [ "src" ]
 }

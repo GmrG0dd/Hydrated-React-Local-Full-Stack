@@ -1,7 +1,6 @@
 import { execSync, exec } from 'child_process';
 import { resolve } from 'path';
 import fs from 'fs';
-import watch from './watch';
 
 let key = {};
 const indexFile = "import React from 'react'; import ReactDOM from 'react-dom/client'; import {ServerPropsType} from '../../server'; import __App__ from './__App__'; declare global {interface Window{ServerProps:ServerPropsType;}}; ReactDOM.hydrateRoot( document.getElementById('root') as HTMLElement, <__App__/> );"
@@ -51,4 +50,4 @@ for(let i = 0; i < files.length; i++){
 
 fs.writeFileSync('public/src/key.json', JSON.stringify(key));
 
-watch();
+execSync('node public/utils/watch.js');
