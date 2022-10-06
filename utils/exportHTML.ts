@@ -21,8 +21,8 @@ function exportHTML(reactComponent:ReactElement<any>, fileName:string, inputServ
             '<meta name="theme-color" content="#000000" />' +
             '<meta name="description" content="Web site created using create-react-app"/>' +
             '<title>Web Builder</title>' +
-            '<link rel="stylesheet" href="/static/styles/global.css">' +
             '<link rel="stylesheet" href="/static/styles/' + fileName + '.css">' +
+            '<link rel="stylesheet" href="/static/styles/global.css">' +
             '<script>window.ServerProps=' + JSON.stringify(inputServerProps) + '</script>' +
           '</head>' +
           '<body>' +

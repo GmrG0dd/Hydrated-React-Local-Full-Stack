@@ -6,11 +6,12 @@ type Props = {
 }
 
 const App:FunctionComponent<Props> = (props) => {
-    return (
+    return (<>
+        <Header serverProps={props.ServerProps}></Header>
         <main>
-            <Header serverProps={props.ServerProps}></Header>
+            <h1>Your Stuff Goes Here</h1>
         </main>
-    );
+    </>);
 }
 
 export default App;

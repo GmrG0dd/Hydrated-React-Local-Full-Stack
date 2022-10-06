@@ -17,21 +17,32 @@ app.use(session({
 
 /**
  * 
- * declare your server prop types
+ * Declare your server prop types
  * 
  */
 declare global { 
     type ServerPropsType = {
-        isAdmin: boolean 
-}}
+        isAdmin?: boolean,
+        dataTypes?: DataType[],
+        addDataType?: (inputType: DataType) => boolean
+    }
+
+    type DataType = {
+        title: string,
+        dataFieldTypes:{
+            name:string,
+            type:any
+        }[]
+    }
+}
 
 
 /**
  * 
- * declare schemas for local database
+ * Declare schemas for local database
  * 
  */
-import db from 'my-local-json-db';
+import db from './utils/myDB';
 const myDB = new db({
     users: {
         id: 'string',
@@ -39,8 +50,23 @@ const myDB = new db({
         hash: 'string',
         salt: 'string',
         admin: 'boolean'
+    },
+    dataType: {
+        title: 'string',
+        dataFieldTypes: [{
+            name: 'string',
+            type: 'any'
+        }]
     }
 });
+
+
+/**
+ * 
+ * Import utility functions / middleware before your routes
+ * 
+ */
+import './utils/authentication';
 
 
 /**

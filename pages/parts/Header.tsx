@@ -10,23 +10,22 @@ const Header:FunctionComponent<Props>= (props) => {
 
     var links;
 
-    if(props.serverProps.isAdmin){
-        links = (<div>
-            <a href='/'>Home</a>
+    if(props.serverProps?.isAdmin){
+        links = <>
             <a href='/admin'>Account</a>
+            <a style={{textDecoration: 'none'}} href='/'><h2>Home</h2></a>
             <a href='/user/logout'>Log Out</a>
-        </div>);
+        </>;
     } else {
-        links = (<div>
-            <a href='/'>Home</a>
+        links = <>
             <a href='/user/login'>Login</a>
+            <a style={{textDecoration: 'none'}} href='/'><h2>Home</h2></a>
             <a href='/user/register'>Register</a>
-        </div>);
+        </>;
     }
 
     return (
         <header id="header">
-            <p>{''+seconds}</p>
             {links}
         </header>
     );

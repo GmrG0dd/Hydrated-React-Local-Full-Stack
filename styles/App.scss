@@ -1,3 +1,10 @@
-.Message {
-    margin: 50px 0 50px 0;
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: .15;
+    font-size: 4em;
+    white-space: nowrap;
+    font-style: italic;
 }

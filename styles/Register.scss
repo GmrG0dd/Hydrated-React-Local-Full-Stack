@@ -4,33 +4,39 @@ form {
     top: 50%;
     transform: translate(-50%, -50%);
     padding: 2em;
-    border-radius: 2em;
-    background: var(--darkGrey);
-    box-shadow: 0 0.25em 1em 0 rgba(0,0,0,0.25);
 
     input {
-        padding: 0.5em 1em;
-        margin-bottom: 1em;
-        border-radius: 0.5em;
-        border: none;
-        outline: none;
-        background: var(--black);
-        border: 2px solid #00000000;
+        font-family: 'Laro';
+        font-size: 1.5em;
+        padding: 0.4em 0.5em 0.3em 0.5em;
+        margin-bottom: 0.75em;
+        border-radius: 0.2em 0.2em 0 0;
+        background: white;
+        border-bottom: 3px solid white;
+        transition: border-color 0.1s linear;
     }
-    input:hover, input:focus {
-        border: 2px solid var(--lightYellow);
+    input::placeholder {
+        opacity: 0.25;
+    }
+
+    a {
+        margin-left: auto;
+        color: var(--blue);
+        margin-top: -0.5em;
     }
 
     button {
         padding: 0.5em 1em;
         margin: auto;
-        background: var(--black);
+        background: white;
         border-radius: 0.5em;
-        border: none;
-        outline: none;
+        transition: color 0.1s linear, background-color 0.1s linear;
+        font-weight: 400;
     }
     button:hover{
-        background: var(--mediumGrey);
-        color: yellow;
+        background: var(--green);
+        color: white;
+        font-weight: 500;
+        cursor: pointer;
     }
 }

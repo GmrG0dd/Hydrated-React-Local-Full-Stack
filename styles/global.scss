@@ -1,83 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
 :root{
-    --black: #201e1f;
-    --darkGrey: rgb(41, 40, 47);
-    --mediumGrey: #545165;
-    --yellow: yellow;
-    --lightYellow: rgb(210, 210, 63);
+    --black: #3b3e55;
+    --grey1: #F0F2F7;
+    --grey2: #BFC3D9;
+    --green: #00E673;
+    --yellow: #FFEA00;
+    --red: #FF0055;
+    --blue: #00C4D7;
+    --body: 'Hind Madurai';
+    --heading: 'Laro';
 }
 
-html, #root, main {
-    font-family: 'Nunito';
+html, #root {
     position: fixed;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     left: 0;
     right: 0;
     overflow-x: hidden;
+    background: var(--grey1);
+    color: var(--black);
 }
 
 * {
     display: block;
     position: relative;
-    font-size: 1em;
-    color: white;
-    transition: all 0.1s linear;
     font-size: 1.02em;
-    font-weight: 500;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading);
 }
 
 a, span, p, h1, h2, h3, h4, h5, h6 {
     margin: 0px;
     padding: 0px;
     width: fit-content;
+    height: fit-content;
+}
+
+button, input, select {
+    border: none;
+    outline: none;
+    color: var(--black);
+}
+
+a {
+    color: var(--blue);
+    transition: color 0.1s linear;
+}
+a:hover {
+    color: var(--black);
 }
 
 head {
     display: none;
 }
 
-body {
+body, main {
     margin: 0px;
-    min-height: 100%;
-    background: var(--black);
+    min-height: 100vh;
+    line-height: 100%;
+    font-family: var(--body);
+    font-weight: 400;
 }
 
 #header {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     display: grid;
     grid-template-columns: auto;
-    width: calc(100% - 4em);
+    grid-auto-flow: column;
+    grid-gap: 1em;
+    width: fit-content;
     height: fit-content;
-    padding: 0.5em 2em;
-    grid-template-columns: 50% auto;
-    box-shadow: 0 0 1vh 0 rgba(0,0,0, 0.25);
-    background: var(--darkGrey);
+    padding: 1em 2em;
+    background: var(--grey2);
+    border-radius: 0 0 1.5em 1.5em;
+    z-index: 1000;
 
     a {
         text-align: center;
-        background: #00000000;
-        transition: background 0.1s linear, color 0.1s linear;
-        border-radius: 0.25em;
-        width: 100%;
+        transition: color 0.1s linear;
+        margin: 0em 0.5em;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+
+        h2 {
+            font-size: 1.75em;
+            font-weight: 200;
+        }
     }
     a:hover {
-        background: var(--mediumGrey);
-        color: var(--yellow);
-    }
-
-    p {
-        height: fit-content;
-        margin-top: auto;
-        margin-bottom: auto;
-        margin-left: 1em;
-    }
-
-    div {
-        display: grid;
-        grid-template-columns: auto;
-        grid-auto-flow: column;
-        grid-gap: 1em;
+        color: var(--black);
     }
 }
 
