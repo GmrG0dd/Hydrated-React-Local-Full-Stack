@@ -42,7 +42,7 @@ declare global {
  * Declare schemas for local database
  * 
  */
-import db from './utils/myDB';
+import db from 'my-local-json-db';
 const myDB = new db({
     users: {
         id: 'string',

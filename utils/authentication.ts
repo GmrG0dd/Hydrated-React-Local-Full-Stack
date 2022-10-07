@@ -28,7 +28,7 @@ passport.serializeUser((user:any, done) => {
 });
 passport.deserializeUser((userID, done) => {
     let user:any = myDB.find("users", {id: userID});
-    if(user[0]) done(null, user[0]);
+    if(user && user[0]) done(null, user[0]);
     else done(null, null);
 });
 

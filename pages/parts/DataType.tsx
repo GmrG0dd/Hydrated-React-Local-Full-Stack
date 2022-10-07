@@ -1,10 +1,15 @@
 import React from "react";
 
 type Props = {
-    dataType: DataType
+    dataType: DataType,
+    deleteData: (inputData:DataType) => {}
 }
 
 const DataType = (props:Props) => {
+    function deleteThis(){
+        props.deleteData(props.dataType);
+    }
+
     function addDataFields() {
         if(props.dataType){
             return props.dataType.dataFieldTypes.map((dataFieldType, i) => {
@@ -16,9 +21,9 @@ const DataType = (props:Props) => {
     return (
         <div className="DataType">
             <div className="TitleWrapper">
-                <button className="B1">Delete</button>
+                <button onClick={deleteThis} className="B1">Delete</button>
                 <h3>{ props.dataType.title }</h3>
-                <button className="B1">Edit</button>
+                <button className="B2">Edit</button>
             </div>
             <div className="DataFields">
                 { addDataFields() }

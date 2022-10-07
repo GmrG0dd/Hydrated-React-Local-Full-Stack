@@ -13,14 +13,31 @@ const Admin:FunctionComponent<Props> = (props) => {
 
     function renderDataTypes(){
         return dataTypes.map((type, index) => {
-            return <DataType key={index} dataType={type} ></DataType>
+            return <DataType key={index} dataType={type} deleteData={deleteData}></DataType>
         });
+    }
+
+    const deleteData = async (inputData:DataType) => {
+        let response = await fetch('/admin', {
+            headers: {
+                'content-type': "application/json"
+            },
+            method: 'DELETE',
+            body: JSON.stringify(inputData)
+        });
+        
+        response = await response.json();
+        console.log(response);
+        if(response) setDataTypes([...dataTypes].splice(dataTypes.indexOf(inputData), 1));
     }
 
     const [tempDataType, setTempDataType] = useState<ReactElement>(<></>);
 
+    function addTempDataType() {
+        setTempDataType(<TempDataType cancelTempData={cancelTempData} confirmDataType={confirmDataType} ></TempDataType>);
+    }
+
     const confirmDataType = async (inputData:DataType) => {
-        console.log(JSON.stringify(inputData))
         let response = await fetch('/admin', {
             headers: {
                 'content-type': "application/json"
@@ -28,9 +45,8 @@ const Admin:FunctionComponent<Props> = (props) => {
             method: 'POST',
             body: JSON.stringify(inputData)
         });
-
-        response = (await response.json()).body;
-
+        
+        response = await response.json();
         if(!response) return;
 
         setDataTypes([...dataTypes, inputData]);
@@ -38,11 +54,8 @@ const Admin:FunctionComponent<Props> = (props) => {
     }
 
     const cancelTempData = () => {
-        setTempDataType(<></>);
-    }
 
-    function addTempDataType() {
-        setTempDataType(<TempDataType cancelTempData={cancelTempData} confirmDataType={confirmDataType} ></TempDataType>);
+        setTempDataType(<></>);
     }
 
     return (<>

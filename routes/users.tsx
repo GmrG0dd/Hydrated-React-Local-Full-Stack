@@ -38,7 +38,6 @@ users.route('/register')
             return;
         }
         const usersuccess = myDB.write('users', user);
-        console.log(usersuccess);
         if(usersuccess) res.redirect('/user/login');
         else { res.redirect('/user/register') }
     })

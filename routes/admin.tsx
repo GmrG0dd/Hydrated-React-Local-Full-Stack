@@ -18,9 +18,15 @@ admin.route('/')
     })
     .post(async (req:Request, res: Response) => {
         const inputDataType = req.body;
-        console.log(inputDataType)
         if(inputDataType.title && inputDataType.dataFieldTypes && myDB.write('dataType', inputDataType)) res.send(true);
-        res.send(false);
+        else res.send(false);
+    })
+    .delete(async (req:Request, res:Response) => {
+        const inputDataType = req.body;
+        let response;
+        if(inputDataType.title && inputDataType.dataFieldTypes) response = myDB.delete('dataType', inputDataType);
+        if(response) res.send(response.toString());
+        else res.send(false);
     })
 
 
