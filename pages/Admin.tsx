@@ -10,25 +10,13 @@ type Props = {
 const Admin:FunctionComponent<Props> = (props) => {
     if(!props.ServerProps.dataTypes) return <></>;
     const [dataTypes, setDataTypes] = useState<DataType[]>(props.ServerProps.dataTypes);
+    const [isEditing, setIsEditing] = useState<number>(-1);
 
     function renderDataTypes(){
         return dataTypes.map((type, index) => {
-            return <DataType key={index} dataType={type} deleteData={deleteData}></DataType>
+            if(index == isEditing) return <TempDataType preloadedData={[type, index]} confirmDataType={confirmDataType} cancelTempData={cancelTempData}></TempDataType>;
+            else return <DataType key={index} index={index} dataType={type} editData={editData} deleteData={deleteData}></DataType>
         });
-    }
-
-    const deleteData = async (inputData:DataType) => {
-        let response = await fetch('/admin', {
-            headers: {
-                'content-type': "application/json"
-            },
-            method: 'DELETE',
-            body: JSON.stringify(inputData)
-        });
-        
-        response = await response.json();
-        console.log(response);
-        if(response) setDataTypes([...dataTypes].splice(dataTypes.indexOf(inputData), 1));
     }
 
     const [tempDataType, setTempDataType] = useState<ReactElement>(<></>);
@@ -37,7 +25,7 @@ const Admin:FunctionComponent<Props> = (props) => {
         setTempDataType(<TempDataType cancelTempData={cancelTempData} confirmDataType={confirmDataType} ></TempDataType>);
     }
 
-    const confirmDataType = async (inputData:DataType) => {
+    const confirmDataType = async (inputData:DataType, index?:number) => {
         let response = await fetch('/admin', {
             headers: {
                 'content-type': "application/json"
@@ -49,13 +37,42 @@ const Admin:FunctionComponent<Props> = (props) => {
         response = await response.json();
         if(!response) return;
 
-        setDataTypes([...dataTypes, inputData]);
-        setTempDataType(<></>);
+        
+        if(index != undefined){
+            const newDataTypes = [...dataTypes];
+            newDataTypes.splice(index, 1, inputData);
+            setDataTypes(newDataTypes);
+            setIsEditing(-1);
+        } else {
+            setDataTypes([...dataTypes, inputData]);
+            setTempDataType(<></>);
+        }
     }
 
-    const cancelTempData = () => {
+    const cancelTempData = (index?:number) => {
+        if(index) setIsEditing(-1);
+        else setTempDataType(<></>);
+    }
 
-        setTempDataType(<></>);
+    const deleteData = async (index:number) => {
+        let response = await fetch('/admin', {
+            headers: {
+                'content-type': "application/json"
+            },
+            method: 'DELETE',
+            body: JSON.stringify(dataTypes[index])
+        });
+        
+        response = await response.json();
+        if(response) {
+            const newDataTypes = [...dataTypes];
+            newDataTypes.splice(index, 1);
+            setDataTypes(newDataTypes);
+        }
+    }
+
+    const editData = async (index:number) => {
+        setIsEditing(index);
     }
 
     return (<>

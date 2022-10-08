@@ -1,4 +1,6 @@
 #Main {
+    display: grid;
+    grid-template-columns: 33.3% 33.3% 33.3%;
     padding-top: 5em;
     height: fit-content;
     width: calc(100% - 4em);
@@ -15,26 +17,37 @@
     border-radius: 0.5em;
     font-size: 500;
     transition: color 0.1s linear, background-color 0.1s linear, font-weight 0.1s linear;
-}
-.AddDataButton:hover {
-    background: var(--green);
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
+
+    &:hover {
+        background: var(--green);
+        color: white;
+        font-weight: 500;
+        cursor: pointer;
+    }
 }
 
 button {
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.07) inset;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .TempDataType {
     background: white;
     height: fit-content;
-    width: 100%;
+    width: calc(100% - 2em);
+    margin: 0.5em;
     padding: 0.5em;
     border-radius: 0.5em 0.5em 0 0;
     border-bottom: 0.25em solid var(--red);
     box-shadow: 0 0 0.5em 0 rgba(0,0,0, 0.03);
+    transition: border 0.1s linear;
+
+    &:hover {
+        border-color: var(--yellow);
+    }
 
     .ControllerButtons {
         display: grid;
@@ -49,31 +62,29 @@ button {
             text-align: center;
         }
 
-        .ButtonsWrapper {
-            button {
-                height: fit-content;
-                width: fit-content;
-                top: 0;
-                padding: 0.3em 0.5em;
-                border-radius: 10em;
-                background: white;
-                font-size: 0.75em;
-                font-weight: 500;
-                background: var(--grey1);
-                transition: color 0.1s linear, background 0.1s linear;
-            }
-    
-            .Save:hover {
-                background: var(--green);
-                color: white;
-                cursor: pointer;
-            }
-    
-            .Cancel:hover {
-                background: var(--red);
-                color: white;
-                cursor: pointer;
-            }
+        button {
+            height: fit-content;
+            width: fit-content;
+            top: 0;
+            padding: 0.3em 0.5em;
+            border-radius: 10em;
+            background: white;
+            font-size: 0.75em;
+            font-weight: 500;
+            background: var(--grey1);
+            transition: color 0.1s linear, background 0.1s linear;
+        }
+
+        .Save:hover {
+            background: var(--green);
+            color: white;
+            cursor: pointer;
+        }
+
+        .Cancel:hover {
+            background: var(--red);
+            color: white;
+            cursor: pointer;
         }
     }
 
@@ -117,12 +128,12 @@ button {
             font-weight: 600;
             background: var(--grey1);
             transition: color 0.1s linear, background 0.1s linear;
-        }
 
-        button:hover{
-            background: var(--red);
-            color: white;
-            cursor: pointer;
+            &:hover{
+                background: var(--red);
+                color: white;
+                cursor: pointer;
+            }
         }
     }
 
@@ -133,37 +144,43 @@ button {
         padding: 0.25em 0.55em;
         background: var(--grey1);
         transition: color 0.1s linear, background 0.1s linear;
-    }
 
-    .AddDataField:hover{
-        background: var(--green);
-        color: white;
-        cursor: pointer;
+        &:hover{
+            background: var(--yellow);
+            color: white;
+            cursor: pointer;
+        }
     }
 }
 
 .DataType {
     background: white;
     height: fit-content; 
-    width: 100%;
+    width: calc(100% - 2em);
+    margin: 0.5em;
     padding: 0.5em;
     border-radius: 0.5em 0.5em 0 0;
-    border-bottom: 0.25em solid var(--red);
+    border-bottom: 0.25em solid var(--green);
     box-shadow: 0 0 0.5em 0 rgba(0,0,0, 0.03);
+    transition: border 0.1s linear;
 
-    .DataFields {
-        p {
-            margin: 1em;
-            width: 100%;
-
-            span {
-                display: inline;
-                text-align: right;
-            }
-        }
+    &:hover {
+        border-color: var(--yellow);
     }
 
     .TitleWrapper{
+        display: grid;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+
+        h3 {
+            margin: auto;
+        }
+
+        div {
+            height: 100%;
+            width: 100%;
+        }
+
         button {
             height: fit-content;
             width: fit-content;
@@ -175,6 +192,10 @@ button {
             transition: color 0.1s linear, background 0.1s linear;
         }
 
+        .B2, .B3 {
+            float: right;
+        }
+
         .B1:hover {
             background: var(--red);
             color: white;
@@ -183,6 +204,23 @@ button {
         .B2:hover {
             background: var(--green);
             color: white;
+        }
+
+        .B3:hover {
+            background: var(--yellow);
+            color: white;
+        }
+    }
+
+    .DataFields {
+        p {
+            margin: 1em;
+            width: calc(100% - 2em);
+
+            span {
+                display: inline;
+                float: right;
+            }
         }
     }
 }
