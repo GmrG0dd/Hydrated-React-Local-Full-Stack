@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from "react";
 
 type Props = {
     confirmDataType: (inputData: DataType, index?:number) => void,
-    cancelTempData: (index?:number) => void,
+    cancelData: (index?:number) => void,
     preloadedData?: [DataType, number]
 }
 
@@ -21,7 +21,7 @@ const TempDataType:FunctionComponent<Props> = (props:Props) => {
         loadedTitle = props.preloadedData[0].title;
     }
 
-    const [ dataTypeName, setDataTypeName] = useState(loadedTitle);
+    const [ dataTypeName, setDataTypeName ] = useState(loadedTitle);
     const [ dataFields, setDataFields ] = useState(loadedData);
 
     function renderDataFields(){
@@ -42,7 +42,8 @@ const TempDataType:FunctionComponent<Props> = (props:Props) => {
     function updateName(index:number, event:React.ChangeEvent){
         const newValue = (event.target as HTMLInputElement).value;
 
-        let newDataFields = [...dataFields];
+        let newDataFields:any = JSON.stringify(dataFields);
+        newDataFields = JSON.parse(newDataFields);
         newDataFields[index].name = newValue;
 
         setDataFields(newDataFields);
@@ -51,7 +52,8 @@ const TempDataType:FunctionComponent<Props> = (props:Props) => {
     function updateType(index:number, event:React.ChangeEvent){
         const newValue = (event.target as HTMLSelectElement).value;
 
-        let newDataFields = [...dataFields];
+        let newDataFields:any = JSON.stringify(dataFields);
+        newDataFields = JSON.parse(newDataFields);
         newDataFields[index].type = newValue;
 
         setDataFields(newDataFields);
@@ -71,14 +73,14 @@ const TempDataType:FunctionComponent<Props> = (props:Props) => {
         setDataTypeName((e.target as HTMLInputElement).value);
     }
 
-    function saveThis(inputData:DataType){
+    function saveThis(){
         if(props.preloadedData) props.confirmDataType({title: dataTypeName, dataFieldTypes: dataFields}, props.preloadedData[1]);
         else props.confirmDataType({title: dataTypeName, dataFieldTypes: dataFields});
     }
 
     function deleteThis(){
-        if(props.preloadedData) props.cancelTempData(props.preloadedData[1]);
-        else props.cancelTempData();
+        if(props.preloadedData) props.cancelData(props.preloadedData[1]);
+        else props.cancelData();
     }
 
     return (
@@ -86,7 +88,7 @@ const TempDataType:FunctionComponent<Props> = (props:Props) => {
             <div className='ControllerButtons'>
                 <button onClick={() => {deleteThis()}} className='Cancel'>Cancel</button>
                 <input onChange={e => {updateTitle(e)}} placeholder="-Name-" value={dataTypeName}></input>
-                <button onClick={() => {saveThis({title: dataTypeName, dataFieldTypes: dataFields})}} className='Save'>Save</button>
+                <button onClick={() => {saveThis()}} className='Save'>Save</button>
             </div>
             {renderDataFields()}
             <button onClick={() => {addDataField()}} className="AddDataField">+</button>

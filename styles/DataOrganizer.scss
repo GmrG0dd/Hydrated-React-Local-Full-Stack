@@ -22,15 +22,6 @@
         background: var(--green);
         color: white;
         font-weight: 500;
-        cursor: pointer;
-    }
-}
-
-button {
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.07) inset;
-
-    &:hover {
-        cursor: pointer;
     }
 }
 
@@ -44,6 +35,10 @@ button {
     border-bottom: 0.25em solid var(--red);
     box-shadow: 0 0 0.5em 0 rgba(0,0,0, 0.03);
     transition: border 0.1s linear;
+    
+    button {
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.07) inset;
+    }
 
     &:hover {
         border-color: var(--yellow);
@@ -78,13 +73,11 @@ button {
         .Save:hover {
             background: var(--green);
             color: white;
-            cursor: pointer;
         }
 
         .Cancel:hover {
             background: var(--red);
             color: white;
-            cursor: pointer;
         }
     }
 
@@ -166,6 +159,10 @@ button {
 
     &:hover {
         border-color: var(--yellow);
+    }
+
+    button {
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.07) inset;
     }
 
     .TitleWrapper{

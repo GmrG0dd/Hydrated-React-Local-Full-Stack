@@ -46,6 +46,10 @@ button, input, select {
     color: var(--black);
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 a {
     color: var(--blue);
     transition: color 0.1s linear;
