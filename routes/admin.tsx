@@ -17,15 +17,23 @@ admin.route('/')
         res.send(exportHTML(<Admin ServerProps={req.session.serverProps}/>, 'Admin', req.session.serverProps));
     })
     .post(async (req:Request, res: Response) => {
-        const inputDataType = req.body;
-        if(inputDataType.title && inputDataType.dataFieldTypes && myDB.write('dataType', inputDataType)) res.send(true);
-        else res.send(false);
+        const inputDataType:DataType[] = req.body;
+        if(inputDataType && inputDataType.length == 1){
+            if(myDB.write('dataType', inputDataType[0])) {
+                res.send(true);
+                return;
+            }
+        } else if(inputDataType && inputDataType.length == 2) {
+            if(myDB.write('dataType', inputDataType[0], inputDataType[1])) {
+                res.send(true);
+                return;
+            }
+        }
+        res.send(false);
     })
     .delete(async (req:Request, res:Response) => {
-        const inputDataType = req.body;
-        let response;
-        if(inputDataType.title && inputDataType.dataFieldTypes) response = myDB.delete('dataType', inputDataType);
-        if(response) res.send(response.toString());
+        const inputDataType:DataType = req.body;
+        if(inputDataType && myDB.delete('dataType', inputDataType)) res.send(true);
         else res.send(false);
     })
 

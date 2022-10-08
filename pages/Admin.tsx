@@ -26,17 +26,19 @@ const Admin:FunctionComponent<Props> = (props) => {
     }
 
     const confirmDataType = async (inputData:DataType, index?:number) => {
+        let postBody;
+        index != undefined ? postBody = [inputData, dataTypes[index]] : postBody = [inputData];
+
         let response = await fetch('/admin', {
             headers: {
                 'content-type': "application/json"
             },
             method: 'POST',
-            body: JSON.stringify(inputData)
+            body: JSON.stringify(postBody)
         });
         
         response = await response.json();
         if(!response) return;
-
         
         if(index != undefined){
             const newDataTypes = [...dataTypes];
