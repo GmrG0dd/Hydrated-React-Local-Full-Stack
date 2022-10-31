@@ -1,42 +1,53 @@
 form {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    flex-direction: column;
     padding: 2em;
+    height: fit-content;
+    margin: auto;
+    font-size: 1.75em;
 
     input {
-        font-family: 'Laro';
-        font-size: 1.5em;
+        font-family: "Hind Madurai";
         padding: 0.4em 0.5em 0.3em 0.5em;
         margin-bottom: 0.75em;
-        border-radius: 0.2em 0.2em 0 0;
-        background: white;
-        border-bottom: 3px solid var(--red);
-        transition: border-color 0.1s linear;
+        border-radius: 0.2em;
+        transition: box-shadow 0.1s linear;
+
+        &:hover, &:focus {
+            box-shadow: 0 0 0 0.05em var(--green) inset;
+            background: var(--black1);
+        }
     }
     input::placeholder {
         opacity: 0.25;
     }
 
-    a {
+    p {
         margin-left: auto;
         color: var(--blue);
         margin-top: -0.5em;
+        font-family: "Rubik";
+        text-decoration: underline;
+        transition: color 0.1s linear;
+        font-size: 0.8em;
+
+        &:hover {
+            color: var(--green);
+            cursor: pointer;
+        }
     }
 
     button {
         padding: 0.5em 1em;
         margin: auto;
-        background: white;
         border-radius: 0.5em;
-        transition: color 0.1s linear, background-color 0.1s linear;
-        font-weight: 400;
-    }
-    button:hover{
-        background: var(--green);
-        color: white;
+        transition: color 0.1s linear, box-shadow 0.1s linear;
         font-weight: 500;
-        cursor: pointer;
+        font-size: 0.8em;
+
+        &:hover{
+            color: var(--green);
+            box-shadow: 0 0 0 0.1em var(--green);
+            background: var(--black1);
+        }
     }
 }

@@ -5,13 +5,8 @@ import exportHTML from "../utils/exportHTML.js";
 
 const index = express.Router();
 
-
-
-index.get('/', async ( req:any, res:Response ) => {
-    res.setHeader("Content-Type", "text/html");
+index.get('/', async ( req, res ) => {
     res.send(exportHTML(<App ServerProps={req.session.serverProps}/>, 'App', req.session.serverProps));
 });
-
-
 
 export default index;

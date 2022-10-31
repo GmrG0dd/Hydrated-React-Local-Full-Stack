@@ -19,14 +19,15 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react",
-    "outDir": "public"
+    "outDir": "src"
   },
   "include": [
-    "**/*.tsx", "**/*.ts", "db/*.js"
-, "node_modules/hydrated-react-local-full-stack-scripts/watch.ts"  ],
+    "**/*.tsx",
+    "**/*.ts",
+    "node_modules/hydrated-react-local-full-stack-scripts/watch.ts"  
+  ],
   "exclude": [
-    "db",
-    "public",
+    "src",
     "node_modules",
     "client"
   ]

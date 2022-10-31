@@ -1,8 +1,7 @@
-nodes_modules
-client/nodes_modules
+node_modules
+client/node_modules
 client/build
 client/src
-public/*
+src/*
 assets/*
-node_modules
 .DS_Store

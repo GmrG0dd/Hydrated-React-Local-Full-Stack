@@ -3,15 +3,15 @@ import Header from './parts/Header';
 
 type Props = {
     ServerProps: ServerPropsType
-};
+}
 
-const App:FunctionComponent<Props> = (props) => {
+const Admin:FunctionComponent<Props> = (props) => {
     return (<>
         <Header serverProps={props.ServerProps}></Header>
         <main>
-            <h1>Your stuff goes here...</h1>
+            <h1>Hi Admin &#40;;</h1>
         </main>
-    </>)
+    </>);
 }
 
-export default App;
+export default Admin;
