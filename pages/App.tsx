@@ -21,26 +21,28 @@ function printCoordinate(coordinate:[number, number]) {
 
 const App:FunctionComponent<Props> = (props) => {
     const [shapes, setShapes] = useState<Shape[]>([{
-        startingPoint: [100,250],
+        startingPoint: [0,500],
         curves: [
             {
-                firstHandle: [100,100],
-                secondHandle: [400,100],
-                end: [400,250]
+                firstHandle: [0,200],
+                secondHandle: [500,200],
+                end: [500,500]
             }, 
             {
-                firstHandle: [700,100],
-                secondHandle: [700,400],
-                end: [700,250]
+                firstHandle: [500,200],
+                secondHandle: [1000,800],
+                end: [1000,500]
             }
         ]
     }]);
+
     const renderedShapes = shapes.map((shape, i) => {
+
         const curveInstrunctions = shape.curves.map(curve => {
             return `C${printCoordinate(curve.firstHandle)} ${printCoordinate(curve.secondHandle)} ${printCoordinate(curve.end)} `;
         });
         return <div key={i}>
-            <svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+            <svg preserveAspectRatio='xMidYMid' width="1" height="1" xmlns="http://www.w3.org/2000/svg">
                 <path d={`M${printCoordinate(shape.startingPoint)} ${curveInstrunctions}`}/>
             </svg>
         </div>
