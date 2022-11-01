@@ -1,5 +1,6 @@
 const { resolve } = require('path');
 const { readdirSync } = require('fs');
+const TerserPlugin = require("terser-webpack-plugin");
 
 let entryObject = {};
 readdirSync('./pages').forEach(page => {
@@ -23,8 +24,12 @@ module.exports = {
     extensions: ['.tsx', '.ts'],
   },
   output: {
-    filename: 'src/public/JS/[name].js',
-    path: resolve('./test'),
+    filename: '[name].js',
+    path: resolve('./src/public/JS/'),
   },
-  mode: 'production'
+  mode: 'production',
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  }
 };

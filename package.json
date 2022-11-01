@@ -5,7 +5,7 @@
   "main": "public/server.js",
   "bin": "utils/cli.js",
   "scripts": {
-    "start": "tsc node_modules/hydrated-react-local-full-stack-scripts/fullBuild.ts && node node_modules/hydrated-react-local-full-stack-scripts/watch.js",
+    "start": "node node_modules/hydrated-react-local-full-stack-scripts/watch.js",
     "build": "node node_modules/hydrated-react-local-full-stack-scripts/fullBuild.js"
   },
   "author": "Kevin Cox",

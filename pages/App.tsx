@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
+import { hydrateRoot } from 'react-dom/client';
 import Header from './parts/Header';
 
 type Props = {
@@ -35,21 +36,15 @@ const App:FunctionComponent<Props> = (props) => {
         ]
     }]);
     const renderedShapes = shapes.map((shape, i) => {
-        //M100,250 C100,100 400,100 400,250 S700,400 700,250
         const curveInstrunctions = shape.curves.map(curve => {
             return `C${printCoordinate(curve.firstHandle)} ${printCoordinate(curve.secondHandle)} ${printCoordinate(curve.end)} `;
-        })
-
-        
-
+        });
         return <div key={i}>
             <svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
                 <path d={`M${printCoordinate(shape.startingPoint)} ${curveInstrunctions}`}/>
             </svg>
-            <p>{`M${printCoordinate(shape.startingPoint)} ${curveInstrunctions}`}</p>
         </div>
     });
-
 
     return (<>
         <Header serverProps={props.ServerProps}></Header>
@@ -57,6 +52,10 @@ const App:FunctionComponent<Props> = (props) => {
             {renderedShapes}
         </main>
     </>)
+}
+
+if (typeof window !== 'undefined') {
+    hydrateRoot( document.getElementById('root') as HTMLElement, <App ServerProps={window.ServerProps}/> );
 }
 
 export default App;

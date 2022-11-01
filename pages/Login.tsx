@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useRef, useState } from 'react';
+import { hydrateRoot } from 'react-dom/client';
 import Header from './parts/Header';
 
 type Props = {
@@ -55,6 +56,10 @@ const Login:FunctionComponent<Props> = (props) => {
             </form>
         </main>
     </>);
+}
+
+if (typeof window !== 'undefined') {
+    hydrateRoot( document.getElementById('root') as HTMLElement, <Login ServerProps={window.ServerProps}/> );
 }
 
 export default Login;

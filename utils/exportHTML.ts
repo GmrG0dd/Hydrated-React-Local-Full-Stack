@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { ReactElement } from 'react';
 import { renderToString } from 'react-dom/server';
 
@@ -9,7 +8,6 @@ declare global {
 }
 
 function exportHTML(reactComponent:ReactElement<any>, fileName:string, inputServerProps?:ServerPropsType | {}){
-  const key = JSON.parse(fs.readFileSync('./src/public/JS/key.json').toString());
   if(!inputServerProps) inputServerProps = {}
   return (
         '<!DOCTYPE html>' +
@@ -27,7 +25,7 @@ function exportHTML(reactComponent:ReactElement<any>, fileName:string, inputServ
           '</head>' +
           '<body>' +
             `<div id="root">${renderToString(reactComponent)}</div>` +
-            `<script src="/JS/${key[fileName]}"></script>` + 
+            `<script src="/JS/${fileName}.js"></script>` + 
           '</body>' +
         '</html>'
   )
