@@ -30,7 +30,7 @@ function exportHTML(reactComponent:ReactElement<any>, fileName:string, inputServ
             `<script src="/JS/${key[fileName]}"></script>` + 
           '</body>' +
         '</html>'
-    )
+  )
 }
 
 export default exportHTML;

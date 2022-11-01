@@ -2,7 +2,7 @@ import express, { Response, Request } from 'express';
 import passport from 'passport';
 import crypto from 'crypto';
 import React from 'react';
-import exportHTML from "../utils/exportHTML.js";
+import exportHTML from "../utils/exportHTML";
 import Login from '../pages/Login';
 import { User } from '../db/Users';
 

@@ -2,7 +2,9 @@ import { Request, Response, NextFunction } from "express";
 import { Strategy as LocalStrategy } from 'passport-local';
 import passport from 'passport';
 import crypto from 'crypto';
+
 import { User } from '../db/Users';
+import { app } from '../server';
 
 passport.use(new LocalStrategy({
     usernameField: 'username', 
@@ -14,8 +16,6 @@ passport.use(new LocalStrategy({
     }
     return done(null, null);
 }));
-
-import { app } from '../server';
 
 app.use(passport.initialize());
 app.use(passport.session());

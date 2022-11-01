@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES5",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "outDir": "src",
     "lib": [
       "dom",
       "dom.iterable",
       "ESNext"
     ],
+    "sourceMap": true,
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -13,13 +18,9 @@
     "strict": true,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": true,
-    "module": "Node16",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false,
-    "jsx": "react",
-    "outDir": "src"
+    "noEmit": false
   },
   "include": [
     "**/*.tsx",

@@ -1,9 +1,13 @@
 main {
-    h1 {
-        margin: auto;
-        font-size: 5em;
-        font-style: italic;
-        font-weight: 300;
-        color: rgba(255,255,255, 0.15);
+    div {
+        flex-direction: column;
+
+        p {
+            margin: auto;
+            font-size: 2.5em;
+            font-style: italic;
+            font-weight: 300;
+            color: rgba(255,255,255, 0.15);
+        }
     }
 }

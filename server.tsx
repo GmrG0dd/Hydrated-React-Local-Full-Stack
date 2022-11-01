@@ -35,9 +35,9 @@ import './utils/authentication';
  * Declare your routes
  * 
  */
-import index from './routes/index.js';
-import users from './routes/users.js';
-import admin from './routes/admin.js';
+import index from './routes/index';
+import users from './routes/users';
+import admin from './routes/admin';
 
 app.use('/', index);
 app.use('/user', users);

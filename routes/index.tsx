@@ -1,7 +1,7 @@
 import express, { Response } from "express";
 import React from "react";
-import App from "../pages/App.js";
-import exportHTML from "../utils/exportHTML.js";
+import App from "../pages/App";
+import exportHTML from "../utils/exportHTML";
 
 const index = express.Router();
 

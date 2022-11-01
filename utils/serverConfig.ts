@@ -41,9 +41,9 @@ app.use(session({
     secret: 'secret', //save in env variables 
     resave: true,
     saveUninitialized: true,
-    cookie : { 
-        secure : false, //change to true when hosting on https server
-        maxAge : 24 * 60 * 60 * 1000,
+    cookie: { 
+        secure: false, //change to true when hosting on https server
+        maxAge: 24 * 60 * 60 * 1000,
         sameSite: true
     },
     store: new MongoDBStore({
