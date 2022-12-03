@@ -9,7 +9,7 @@ import User from '../db/Users';
 const users = express.Router();
 
 users.route('/login')
-    .post(passport.authenticate('local', {successRedirect: '/admin', failureRedirect: '/login'}))
+    .post(passport.authenticate('local', {successRedirect: '/admin', failureRedirect: '/user/login'}))
     .get(async (req, res) => {
         res.send(exportHTML(<Login ServerProps={req.session.serverProps}/>, 'Login', req.session.serverProps));
     });

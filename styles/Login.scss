@@ -10,11 +10,12 @@ form {
         padding: 0.4em 0.5em 0.3em 0.5em;
         margin-bottom: 0.75em;
         border-radius: 0.2em;
-        transition: box-shadow 0.1s linear;
+        box-shadow: 0 0 0 0.1em var(--black2) inset;
+        transition: box-shadow 0.1s linear, transform 0.1s linear;
 
         &:hover, &:focus {
-            box-shadow: 0 0 0 0.05em var(--green) inset;
-            background: var(--black1);
+            box-shadow: 0 0 0 0.1em var(--blue) inset;
+            transform: scale(1.05);
         }
     }
     input::placeholder {
@@ -40,14 +41,15 @@ form {
         padding: 0.5em 1em;
         margin: auto;
         border-radius: 0.5em;
-        transition: color 0.1s linear, box-shadow 0.1s linear;
         font-weight: 500;
         font-size: 0.8em;
+        background-color: var(--black2);
+        color: var(--white);
+        transition: transform 0.1s linear, box-shadow 0.1s linear;
 
         &:hover{
-            color: var(--green);
-            box-shadow: 0 0 0 0.1em var(--green);
-            background: var(--black1);
+            background: var(--green);
+            transform: scale(1.25);
         }
     }
 }
