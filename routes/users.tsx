@@ -1,10 +1,10 @@
-import express, { Response, Request } from 'express';
+import express from 'express';
 import passport from 'passport';
 import crypto from 'crypto';
 import React from 'react';
 import exportHTML from "../utils/exportHTML";
 import Login from '../pages/Login';
-import { User } from '../db/Users';
+import User from '../db/Users';
 
 const users = express.Router();
 
@@ -31,15 +31,11 @@ users.route('/register')
             salt: salthash.salt,
             admin: true
         };
-        if(await User.findOne({username: req.body.username}).exec()) {
+        if(await User.findOne({username: req.body.username})) {
             res.send(false); 
             return;
         }
-        User.create(user, err => {
-            if(err) res.send(false); 
-            else res.send(true);
-            return;
-        });
+        User.create(user);
     })
 
 

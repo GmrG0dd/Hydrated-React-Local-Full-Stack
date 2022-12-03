@@ -5,7 +5,7 @@
   "main": "public/server.js",
   "bin": "utils/cli.js",
   "scripts": {
-    "start": "node node_modules/hydrated-react-local-full-stack-scripts/watch.js",
+    "start": "tsc utils/watch.ts --outdir src/utils/ && node src/utils/watch.js",
     "build": "node node_modules/hydrated-react-local-full-stack-scripts/fullBuild.js"
   },
   "author": "Kevin Cox",
@@ -22,7 +22,7 @@
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "hydrated-react-local-full-stack-scripts": "^1.0.8",
-    "mongoose": "^6.6.7",
+    "mongoose": "^6.7.5",
     "node-watch": "^0.7.3",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",

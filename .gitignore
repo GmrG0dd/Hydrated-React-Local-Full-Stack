@@ -1,5 +1,4 @@
 node_modules
-assets/*
+assets
 src
-utils/cli.js
 .DS_Store

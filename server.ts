@@ -49,7 +49,7 @@ app.use('/admin', admin);
  * Declaring static files in the assets folder and starting up server
  * 
  */
-app.use('/assets', express.static('assets'));
+app.use('/assets', express.static('src/puclic/assets'));
 app.use('/CSS', express.static('src/public/CSS'));
 app.use('/JS', express.static('src/public/JS'));
 

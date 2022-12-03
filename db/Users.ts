@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose";
+import { MongoClient } from 'mongodb';
 
-mongoose.connect('mongodb://127.0.0.1:27017');
+const client = new MongoClient('mongodb://127.0.0.1:27017');
 
 declare global {
     namespace Express {
@@ -8,39 +8,28 @@ declare global {
     }
 }
 
-export interface UserType {
-    passportid: string,
+interface User {
     username: string,
     hash: string,
     salt: string,
     admin: boolean
 }
 
-interface UserTypeDocument extends UserType, mongoose.Document {
-    createdAt: Date;
-    updateAt: Date;
+export interface UserType extends User {
+    _id: string
 }
 
-export const User = mongoose.model<UserTypeDocument>('User', new Schema<UserType>({
-    passportid: {
-        type: String,
-        required: true,
-        unique: true
+const User = {
+    findOne: async (query:Partial<UserType>) => {
+        await client.connect();
+        const result = await client.db('test').collection<UserType>('users').findOne(query);
+        return result;
     },
-    username: {
-        type: String,
-        required: true
-    },
-    hash: {
-        type: String,
-        required: true
-    },
-    salt: {
-        type: String,
-        required: true
-    },
-    admin: {
-        type: Boolean,
-        required: true
+    create: async (newUser:User) => {
+        await client.connect();
+        const result = await client.db('test').collection<User>('users').insertOne(newUser);
+        return result;
     }
-}));
+}
+
+export default User;

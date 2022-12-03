@@ -25,6 +25,7 @@ const Login:FunctionComponent<Props> = (props) => {
                     password: passRef.current.value
                 })
             });
+            if(response.redirected) window.location.href = response.url;
         } else {
             const response = await fetch('/user/login', {
                 method: "POST",
@@ -36,8 +37,7 @@ const Login:FunctionComponent<Props> = (props) => {
                     password: passRef.current.value
                 })
             });
-            console.log(response);
-            if((await response.json()).body) window.location.href = '/admin';
+            if(response.redirected) window.location.href = response.url;
         }
     }
 

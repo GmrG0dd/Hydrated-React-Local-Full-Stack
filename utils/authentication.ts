@@ -3,14 +3,14 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import passport from 'passport';
 import crypto from 'crypto';
 
-import { User } from '../db/Users';
+import User from '../db/Users';
 import { app } from '../server';
 
 passport.use(new LocalStrategy({
     usernameField: 'username', 
     passwordField: 'password'
 }, async (username, password, done) => {
-    const user = await User.findOne({ username: username }).exec();
+    const user = await User.findOne({ username: username });
     if (user && user.hash === crypto.pbkdf2Sync(password, user.salt, 10000, 64, 'sha512').toString('hex')) {
         return done(null, user);
     }
@@ -21,10 +21,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user, done) => {
-    done(null, user.passportid);
+    const id = user._id;
+    done(null, id);
 });
-passport.deserializeUser(async (userID, done) => {
-    const user = await User.findOne({ passportid: userID }).exec();
+passport.deserializeUser(async (userID:string, done) => {
+    const user = await User.findOne({_id: userID});
     if(user) done(null, user);
     else done(null, null);
 });
@@ -38,12 +39,12 @@ app.use((req, res, next) => {
 
 function isAuth ( req:Request, res:Response, next:NextFunction ) {
     if(req.isAuthenticated()) { next() }
-    else res.send("Unauthenticated");
+    else res.status(302).redirect('/user/login');
 };
 
 function isAdmin ( req:Request, res:Response, next:NextFunction ) {
     if(req.isAuthenticated() && req.user.admin) { next() }
-    else res.send("Unauthenticated");
+    else res.status(302).redirect('/user/login');
 }
 
 export { isAdmin, isAuth };
