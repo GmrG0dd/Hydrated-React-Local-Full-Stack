@@ -13,7 +13,6 @@ const Login:FunctionComponent<Props> = (props) => {
 
     async function postLogin() {
         if( !userRef.current || !passRef.current ) return false;
-        console.log(fakeLink);
         if( fakeLink == 'login' ) {
             const response = await fetch('/user/register', {
                 method: "POST",
